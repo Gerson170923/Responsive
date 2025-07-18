@@ -6,12 +6,74 @@
     <title>Productos - La Nevería</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Estilos para el menú hamburguesa */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            padding-left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                background-color: #f8f9fa;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                padding: 10px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .product-card img {
+            max-height: 150px;
+            object-fit: contain;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px 0;
+            background: #f1f1f1;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-  <img src="LOGO.png" width="400" height="100" class="d-inline-block align-top" alt="Bootstrap"/>
-    
+    <header class="bg-light py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <img src="LOGO.png" width="200" height="60" class="img-fluid" alt="La Nevería">
             <nav>
                 <div class="hamburger" onclick="toggleMenu()">
                     <span></span>
@@ -19,41 +81,48 @@
                     <span></span>
                 </div>
                 <ul class="nav-menu">
-                    
-                    <li><a style="color:#d81818;" href="https://www.laneveria.com.sv/">LA NEVERIA</a></li>
-                   <li><a style="color:#d89b18;" href="·">INICIO</a></li>
-                   <li><a href="·">NOVEDADES</a></li>
-                    <li><a href="·">PRODUCTOS</a></li>
-                     <li><a href="·">NOSOTROS</a></li>
-                      <li><a href="·">CONTACTO</a></li>
+                    <li><a href="https://www.laneveria.com.sv/" class="text-danger">LA NEVERÍA</a></li>
+                    <li><a href="#">INICIO</a></li>
+                    <li><a href="#">NOVEDADES</a></li>
+                    <li><a href="#">PRODUCTOS</a></li>
+                    <li><a href="#">NOSOTROS</a></li>
+                    <li><a href="#">CONTACTO</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="products">
+    <section class="products py-5">
         <div class="container">
-            <h2>Nuestros Productos</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="Sabores.png" alt="Helados">
-                   <link rel="stylesheet" href=""> <h3>Helados</h3>
-                    <p>Deliciosos helados en variedad de sabores como Chocolate, Vainilla y Nieve Arcoiris.</p>
+            <h2 class="text-center mb-4">Nuestros Productos</h2>
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="Sabores.png" alt="Helados" class="img-fluid mb-3">
+                        <h3>Helados</h3>
+                        <p>Deliciosos helados en variedad de sabores como Chocolate, Vainilla y Nieve Arcoiris.</p>
+                    </div>
                 </div>
-                <div class="product-card">
-                    <img src="paletas.png" alt="Paletas">
-                    <h3>Paletas</h3>
-                    <p>Refrescantes paletas como Goliat Almendra y Nieve de Mango.</p>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="paletas.png" alt="Paletas" class="img-fluid mb-3">
+                        <h3>Paletas</h3>
+                        <p>Refrescantes paletas como Goliat Almendra y Nieve de Mango.</p>
+                    </div>
                 </div>
-                <div class="product-card">
-                    <img src="pasteles.jpg" alt="Pasteles">
-                    <h3>Pasteles</h3>
-                    <p>Exquisitos pasteles de helado y pan para cualquier ocasión.</p>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="pasteles.jpg" alt="Pasteles" class="img-fluid mb-3">
+                        <h3>Pasteles</h3>
+                        <p>Exquisitos pasteles de helado y pan para cualquier ocasión.</p>
+                    </div>
                 </div>
-                <div class="product-card">
-                    <img src="crepas-2022.png" alt="Crepas">
-                    <h3>Crepas</h3>
-                    <p>Crepas con Choco Avellana o Dulce de Leche, con o sin helado.</p>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="crepas-2022.png" alt="Crepas" class="img-fluid mb-3">
+                        <h3>Crepas</h3>
+                        <p>Crepas con Choco Avellana o Dulce de Leche, con o sin helado.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -70,6 +139,11 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.nav-menu');
+            menu.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
