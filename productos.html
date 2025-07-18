@@ -68,6 +68,9 @@
             background: #f1f1f1;
             text-align: center;
         }
+        .nav-menu {
+    transition: all 0.3s ease;
+}
     </style>
 </head>
 <body>
@@ -138,12 +141,21 @@
             </p>
         </div>
     </footer>
+       <script>
+    function toggleMenu() {
+        const menu = document.querySelector('.nav-menu');
+        menu.classList.toggle('active');
+    }
 
-    <script>
-        function toggleMenu() {
+    // Cierra el menú al hacer clic en una opción (opcional)
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
             const menu = document.querySelector('.nav-menu');
-            menu.classList.toggle('active');
-        }
+            if (menu.classList.contains('active')) {
+                menu.classList.remove('active');
+            }
+        });
+    });
     </script>
 </body>
 </html>
